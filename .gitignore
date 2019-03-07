@@ -1,0 +1,16 @@
+﻿################################################################################
+# 此 .gitignore 文件已由 Microsoft(R) Visual Studio 自动创建。
+################################################################################
+
+/.vs
+/Hessian.Models/bin/Debug
+/hessiancsharp/bin/Debug
+/hessiancsharp/obj
+/HessianService/bin
+/HessianService/obj
+/obj
+/Client/bin/Debug
+/Client/obj/Debug
+/Client/obj/Release
+/Hessian.Models/obj/Debug
+/Hessian.Models/obj/Release

@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Client\Client.csproj", "{83A9D0D6-6BC8-4773-8389-ECE8C3CFFD39}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HessianService", "HessianService\HessianService.csproj", "{10DE7166-1ED9-4935-B558-B056559988A4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HessianCSharp", "HessianCSharp\HessianCSharp.csproj", "{77FEADBD-E777-44A6-8B8E-339D93FE089E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hessian.Models", "Hessian.Models\Hessian.Models.csproj", "{DBE1DA17-EB49-4AC0-B2E9-73CA86E2B9B2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{83A9D0D6-6BC8-4773-8389-ECE8C3CFFD39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83A9D0D6-6BC8-4773-8389-ECE8C3CFFD39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83A9D0D6-6BC8-4773-8389-ECE8C3CFFD39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83A9D0D6-6BC8-4773-8389-ECE8C3CFFD39}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10DE7166-1ED9-4935-B558-B056559988A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10DE7166-1ED9-4935-B558-B056559988A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10DE7166-1ED9-4935-B558-B056559988A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10DE7166-1ED9-4935-B558-B056559988A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77FEADBD-E777-44A6-8B8E-339D93FE089E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77FEADBD-E777-44A6-8B8E-339D93FE089E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77FEADBD-E777-44A6-8B8E-339D93FE089E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77FEADBD-E777-44A6-8B8E-339D93FE089E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBE1DA17-EB49-4AC0-B2E9-73CA86E2B9B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBE1DA17-EB49-4AC0-B2E9-73CA86E2B9B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBE1DA17-EB49-4AC0-B2E9-73CA86E2B9B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBE1DA17-EB49-4AC0-B2E9-73CA86E2B9B2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		VisualSVNWorkingCopyRoot = .
+		SolutionGuid = {5B21AF74-4917-4965-94F7-C388A7468035}
+	EndGlobalSection
+	GlobalSection(Performance) = preSolution
+		HasPerformanceSessions = true
+	EndGlobalSection
+	GlobalSection(Performance) = preSolution
+		HasPerformanceSessions = true
+	EndGlobalSection
+	GlobalSection(Performance) = preSolution
+		HasPerformanceSessions = true
+	EndGlobalSection
+EndGlobal

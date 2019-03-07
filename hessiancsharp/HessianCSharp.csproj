@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{77FEADBD-E777-44A6-8B8E-339D93FE089E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HessianCSharp</RootNamespace>
+    <AssemblyName>HessianCSharp</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="client\CHessianMethodCaller.cs" />
+    <Compile Include="client\CHessianProxy.cs" />
+    <Compile Include="client\CHessianProxyFactory.cs" />
+    <Compile Include="client\CHessianProxyStandardImpl.cs" />
+    <Compile Include="client\IHessianProxyStandard.cs" />
+    <Compile Include="io\AbstractDeserializer.cs" />
+    <Compile Include="io\AbstractHessianInput.cs" />
+    <Compile Include="io\AbstractHessianOutput.cs" />
+    <Compile Include="io\AbstractSerializer.cs" />
+    <Compile Include="io\CArrayDeserializer.cs" />
+    <Compile Include="io\CArraySerializer.cs" />
+    <Compile Include="io\CBasicDeserializer.cs" />
+    <Compile Include="io\CBasicSerializer.cs" />
+    <Compile Include="io\CDBNullDeserializer.cs" />
+    <Compile Include="io\CDBNullSerializer.cs" />
+    <Compile Include="io\CGUIDDeserializer.cs" />
+    <Compile Include="io\CGUIDSerializer.cs" />
+    <Compile Include="io\CDecimalSerializer.cs" />
+    <Compile Include="io\CEnumDeserializer.cs" />
+    <Compile Include="io\CEnumerableDeserializer.cs" />
+    <Compile Include="io\CEnumerableSerializer.cs" />
+    <Compile Include="io\CDataSetDeserializer.cs" />
+    <Compile Include="io\CDataTableDeserializer.cs" />
+    <Compile Include="io\CDataSetSerializer.cs" />
+    <Compile Include="io\CDataTableSerializer.cs" />
+    <Compile Include="io\CDecimalDeserializer.cs" />
+    <Compile Include="io\CEnumSerializer.cs" />
+    <Compile Include="io\CExceptionDeserializer.cs" />
+    <Compile Include="io\CExceptionSerializer.cs" />
+    <Compile Include="io\CHessian2Output.cs" />
+    <Compile Include="io\CHessianException.cs" />
+    <Compile Include="io\CHessianInput.cs" />
+    <Compile Include="io\CHessianOutput.cs" />
+    <Compile Include="io\CHessianProtocolConstants.cs" />
+    <Compile Include="io\CInputStreamSerializer.cs" />
+    <Compile Include="io\CMapDeserializer.cs" />
+    <Compile Include="io\CMapSerializer.cs" />
+    <Compile Include="io\CObjectDeserializer.cs" />
+    <Compile Include="io\CObjectSerializer.cs" />
+    <Compile Include="io\CSerializationConstants.cs" />
+    <Compile Include="io\CSerializerFactory.cs" />
+    <Compile Include="io\CStringValueDeserializer.cs" />
+    <Compile Include="io\CStringValueSerializer.cs" />
+    <Compile Include="io\CHessian2Input.cs" />
+    <Compile Include="io\CHessian2Constants.cs" />
+    <Compile Include="io\IDeserializer.cs" />
+    <Compile Include="io\HessianFactory.cs" />
+    <Compile Include="io\IHessianHandle.cs" />
+    <Compile Include="io\HessianInputFactory.cs" />
+    <Compile Include="io\IdentityIntMap.cs" />
+    <Compile Include="io\IgnoreAttribute.cs" />
+    <Compile Include="io\ISerializer.cs" />
+    <Compile Include="server\CHessianHandler.cs" />
+    <Compile Include="server\CHessianSkeleton.cs" />
+    <Compile Include="server\CustomHandler.cs" />
+    <Compile Include="server\EncoderHelper.cs" />
+    <Compile Include="server\RouteAttribute.cs" />
+    <Compile Include="server\ServiceFactory.cs" />
+    <Compile Include="Utilities\ReflectionUtils.cs" />
+    <Compile Include="webserver\CConnection.cs" />
+    <Compile Include="webserver\CWebServer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="io\AbstractStringValueDeserializer.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
