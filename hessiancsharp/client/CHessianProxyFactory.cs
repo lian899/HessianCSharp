@@ -57,6 +57,7 @@ namespace HessianCSharp.client
 
         private string m_password;
         private string m_username;
+        private string _urlSuffix = ".do";
 
         private Uri base_address;
         public Uri BaseAddress
@@ -135,6 +136,12 @@ namespace HessianCSharp.client
             set { _isHessian2Reply = value; }
         }
 
+        public string UrlSuffix
+        {
+            get { return _urlSuffix; }
+            set { _urlSuffix = value; }
+        }
+
         #endregion
 
         #region PUBLIC_METHODS
@@ -158,13 +165,18 @@ namespace HessianCSharp.client
 
         public T Create<T>()
         {
-            var url = (HessianRouteAttribute)typeof(T).GetCustomAttributes(typeof(HessianRouteAttribute), false).FirstOrDefault();
-            if (url == null)
-                throw new ArgumentException("类型上没有找到HessianRouteAttribute特性。");
-
-            //if (url.Uri != null) url.Uri = url.Uri.TrimStart('/');
-
-            return (T)CreateHessianStandardProxy(url.Uri, typeof(T));
+            string url;
+            var attrRoute = (HessianRouteAttribute)typeof(T).GetCustomAttributes(typeof(HessianRouteAttribute), false).FirstOrDefault();
+            if (attrRoute != null)
+            {
+                url = attrRoute.Uri;
+            }
+            else
+            {
+                var type = typeof(T);
+                url = "/" + (type.Namespace + "." + type.Name).Replace(".", "/") + _urlSuffix;
+            }
+            return (T)CreateHessianStandardProxy(url, typeof(T));
         }
 
         /// <summary>

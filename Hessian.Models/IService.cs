@@ -1,10 +1,11 @@
-﻿using System;
+﻿using HessianCSharp.server;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 namespace Hessian.Models
 {
-    [HessianRoute("/Service.do")]
+    //[HessianRoute("/Service.do")]
     public interface IService
     {
         string Hello();
@@ -22,6 +23,7 @@ namespace Hessian.Models
         public float Float { get; set; }
         public double Double { get; set; }
         public long Long { get; set; }
+        public long Long2 { get; set; }
         public DateTime DateTime { get; set; }
     }
 

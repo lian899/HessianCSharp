@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Hessian.Models
 {
-    [HessianRoute("/Service.do")]
+    //[HessianRoute("/Service.do")]
     public interface IService
     {
         string Hello();

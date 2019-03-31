@@ -7,47 +7,100 @@ namespace HessianCSharp.server
 {
     public class ServiceFactory
     {
-        private static List<HessianRoute> _routeList { get; set; }
+        private static Dictionary<string, Type> _routeDictionary { get; set; }
         private static readonly object objLock = new object();
+        private static string _urlSuffix = ".do";
+        private static List<string> _namespaces = new List<string>();
 
-        private static List<HessianRoute> InitServiceBase()
+        static ServiceFactory()
+        {
+            AppDomain.CurrentDomain.AssemblyResolve += (sender, e) =>
+            {
+                lock (objLock)
+                {
+                    _routeDictionary = null;
+                }
+                return null;
+            };
+
+            AppDomain.CurrentDomain.AssemblyLoad += (sender, e) =>
+            {
+                lock (objLock)
+                {
+                    _routeDictionary = null;
+                }
+            };
+        }
+
+        public static string UrlSuffix
+        {
+            get { return _urlSuffix; }
+            set { _urlSuffix = value; }
+        }
+
+        public static List<string> Namespaces
+        {
+            get { return _namespaces; }
+        }
+
+        private static Dictionary<string, Type> InitRoutes()
         {
             lock (objLock)
             {
-                if (_routeList != null) return _routeList;
-                List<HessianRoute> list = new List<HessianRoute>();
+                if (_routeDictionary != null) return _routeDictionary;
+                Dictionary<string, Type> routeDictionary = new Dictionary<string, Type>();
                 var Assemblies = AppDomain.CurrentDomain.GetAssemblies();
                 foreach (var assembly in Assemblies)
                 {
-                    try
+                    if (assembly.FullName.StartsWith("System") || assembly.FullName.StartsWith("Microsoft")) continue;
+
+                    if (assembly.FullName.Contains("Hessian"))
+                        Console.Write(assembly);
+
+                    var allInterfaceImps = GetLoadableTypes(assembly)
+                        .Where(item => item.GetInterfaces().Any())
+                        .Select(item => new
+                        {
+                            Type = item,
+                            Interfaces = item.GetInterfaces()
+                        });
+
+                    foreach (var a in allInterfaceImps)
                     {
-                        var types = GetLoadableTypes(assembly)
-                            .Select(item => new
+                        foreach (var face in a.Interfaces)
+                        {
+                            if (face.FullName == null || face.FullName.StartsWith("System") || face.FullName.StartsWith("Microsoft"))
+                                continue;
+
+                            var attr = face.GetCustomAttributes(typeof(HessianRouteAttribute), false).FirstOrDefault();
+                            if (attr != null)
                             {
-                                Type = item,
-                                Interface = item
-                                .GetInterfaces()
-                                .FirstOrDefault(p => p.GetCustomAttributes(typeof(HessianRouteAttribute), false).Any())
-                            });
+                                var attrUrl = ((HessianRouteAttribute)attr).Uri;
+                                if (attrUrl == null)
+                                    continue;
+                                attrUrl = attrUrl.Trim();
+                                if (!attrUrl.StartsWith("/"))
+                                    attrUrl = "/" + attrUrl;
+                                attrUrl = attrUrl.ToLower();
+                                routeDictionary.Add(attrUrl, a.Type);
 
-                        var routes = types
-                             .Where(item => item.Interface != null)
-                             .Select(t => new HessianRoute
-                             {
-                                 Uri = ((HessianRouteAttribute)t.Interface.GetCustomAttributes(typeof(HessianRouteAttribute), false).First()).Uri,
-                                 Type = t.Type
-                             });
+                            }
 
-                        list.AddRange(routes);
+                            if (face.Namespace != null && Namespaces.Any(item => face.Namespace.StartsWith(item)))
+                            {
+                                var url = "/" + (face.Namespace + "." + face.Name).Replace(".", "/") + _urlSuffix;
+                                url = url.ToLower();
+                                if (routeDictionary.ContainsKey(url))
+                                    continue;
+                                routeDictionary.Add(url, a.Type);
+                            }
+                        }
                     }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(ex.ToString());
-                    }
+
                 }
 
-                _routeList = list;
-                return _routeList;
+                _routeDictionary = routeDictionary;
+                return _routeDictionary;
             }
         }
 
@@ -66,22 +119,16 @@ namespace HessianCSharp.server
 
         public static object SelectService(string serviceUrl)
         {
-            _routeList = InitServiceBase();
+            var routeDictionary = InitRoutes();
             var ctxuri = serviceUrl;
-            foreach (var route in _routeList)
+            if (ctxuri == null) return null;
+            ctxuri = ctxuri.Trim().ToLower();
+            if (routeDictionary.ContainsKey(ctxuri))
             {
-                if (ctxuri == null || route.Uri == null) continue;
-                ctxuri = ctxuri.ToLower();
-                if (route.Uri != null) route.Uri = route.Uri.ToLower();
-                if (ctxuri == route.Uri)
-                    return Activator.CreateInstance(route.Type);
+                return Activator.CreateInstance(routeDictionary[ctxuri]);
             }
+
             return null;
         }
-    }
-    public class HessianRoute
-    {
-        public string Uri { get; set; }
-        public Type Type { get; set; }
     }
 }
