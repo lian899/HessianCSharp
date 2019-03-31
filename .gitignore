@@ -14,3 +14,5 @@
 /Client/obj/Release
 /Hessian.Models/obj/Debug
 /Hessian.Models/obj/Release
+/Hessian.Models/bin/Release
+/hessiancsharp/bin/Release

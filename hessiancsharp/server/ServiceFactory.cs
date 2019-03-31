@@ -86,7 +86,7 @@ namespace HessianCSharp.server
 
                             }
 
-                            if (face.Namespace != null && Namespaces.Any(item => face.Namespace.StartsWith(item)))
+                            if (attr != null || (face.Namespace != null && Namespaces.Any(item => face.Namespace.StartsWith(item))))
                             {
                                 var url = "/" + (face.Namespace + "." + face.Name).Replace(".", "/") + _urlSuffix;
                                 url = url.ToLower();
