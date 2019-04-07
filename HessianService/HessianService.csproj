@@ -117,6 +117,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\CustomUrlRoutingModule.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Service.cs" />
     <Compile Include="Global.asax.cs">

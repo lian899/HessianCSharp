@@ -13,7 +13,7 @@ namespace HessianService
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-            routes.IgnoreRoute("{*alldo}", new { alldo = @".*\.do(/.*)?" });
+            //routes.IgnoreRoute("{*alldo}", new { alldo = @".*\.do(/.*)?" });
 
             routes.MapRoute(
                 name: "Default",
