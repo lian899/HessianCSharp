@@ -126,7 +126,7 @@ namespace HessianCSharp.client
             try
             {
                 var methodUri = new Uri(string.Format("{0}?{1}", m_uriHessianServiceUri.ToString(), HttpUtility.UrlEncode(methodInfo.Name)), UriKind.RelativeOrAbsolute);
-                WebRequest webRequest = this.OpenConnection(m_uriHessianServiceUri);
+                WebRequest webRequest = this.OpenConnection(methodUri);
 #if COMPACT_FRAMEWORK
 #else
                 try
