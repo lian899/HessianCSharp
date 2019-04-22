@@ -10,7 +10,7 @@ namespace HessianService
     {
         public override void PostResolveRequestCache(HttpContextBase context)
         {
-            if (context.Request.RawUrl.ToLower().EndsWith(".do"))
+            if (context.Request.Path.ToLower().EndsWith(".do"))
             {
                 return;
             }

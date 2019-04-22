@@ -77,7 +77,7 @@ namespace HessianCSharp.server
                 //AbstractHessianInput inHessian = new CHessianInput(inStream);
                 //AbstractHessianOutput outHessian = new CHessianOutput(ctx.Response.OutputStream);
 
-                var service = ServiceFactory.SelectService(ctx.Request.RawUrl);
+                var service = ServiceFactory.SelectService(ctx.Request.Path);
                 if (service == null)
                 {
                     ctx.Response.StatusCode = 404;  // "Internal server error"
