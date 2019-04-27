@@ -155,7 +155,7 @@ namespace HessianCSharp.webserver
             SendString(string.Format("Date:{0}\r\n", DateTime.Now));
             SendString(string.Format("Server:{0}\r\n", serverID));
             SendString("Content-Type: text/html; charset=utf-8\r\n");
-            SendString("Connection: close\r\n");
+            SendString("Connection: close\r\n\r\n");
         }
 
         /// <summary>
