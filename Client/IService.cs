@@ -23,7 +23,6 @@ namespace Hessian.Models
         public float Float { get; set; }
         public double Double { get; set; }
         public long Long { get; set; }
-        public long Long2 { get; set; }
         public DateTime DateTime { get; set; }
     }
 

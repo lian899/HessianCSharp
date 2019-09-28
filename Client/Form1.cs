@@ -1,7 +1,6 @@
 ﻿using Hessian.Models;
 using HessianCSharp.client;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
 using System.Windows.Forms;
@@ -19,13 +18,6 @@ namespace Client
         {
             try
             {
-                var dob = -2147483649.32334566D;
-                Console.Write(dob);
-
-                List<int> ls = new List<int>();
-                bool ype = typeof(IList<int>).IsAssignableFrom(typeof(List<int>));
-                Console.Write(ype);
-
                 Stopwatch st = new Stopwatch();
                 st.Start();
                 CHessianProxyFactory factory = new CHessianProxyFactory();
@@ -33,7 +25,7 @@ namespace Client
                 //factory.IsHessian2Reply = false;
                 factory.BaseAddress = new Uri("http://localhost.fiddler:2010/");
                 var service = factory.Create<IService>();
-                var result = service.Test2(new List<int>() { 1, 3, 44 });
+                var result = service.Test2();
                 richTextBox1.Text = $"数据类型：{result.ToString()}";
 
                 var type = result.GetType();
