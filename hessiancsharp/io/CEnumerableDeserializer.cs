@@ -80,6 +80,12 @@ namespace HessianCSharp.io
         #endregion
 
         #region PUBLIC_METHODS
+
+        public override Type GetOwnType()
+        {
+            return m_type;
+        }
+
         /// <summary>
         /// Reads list. 
         /// </summary>

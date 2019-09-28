@@ -408,10 +408,10 @@ namespace HessianCSharp.io
             IDeserializer reader = GetObjectDeserializer(type);
 
             if (expectedType == null
-            || expectedType == reader.GetType()
-            || expectedType.IsAssignableFrom(reader.GetType())
+            || expectedType == reader.GetOwnType()
+            || expectedType.IsAssignableFrom(reader.GetOwnType())
             || reader.IsReadResolve()
-            || typeof(IHessianHandle).IsAssignableFrom(reader.GetType()))
+            || typeof(IHessianHandle).IsAssignableFrom(reader.GetOwnType()))
             {
                 return reader;
             }
@@ -430,8 +430,8 @@ namespace HessianCSharp.io
             IDeserializer reader = GetListDeserializer(type);
 
             if (expectedType == null
-            || expectedType.Equals(reader.GetType())
-            || expectedType.IsAssignableFrom(reader.GetType()))
+            || expectedType.Equals(reader.GetOwnType())
+            || expectedType.IsAssignableFrom(reader.GetOwnType()))
             {
                 return reader;
             }

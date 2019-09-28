@@ -152,7 +152,7 @@ namespace HessianCSharp.client
                 }
 #endif
 
-                webRequest.ContentType = "text/xml";
+                webRequest.ContentType = "application/octet-stream";
                 webRequest.Method = "POST";
 
 #if COMPACT_FRAMEWORK
