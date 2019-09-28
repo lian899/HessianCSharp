@@ -10,6 +10,7 @@ namespace Hessian.Models
     {
         string Hello();
         TestClass[] Test2();
+        TestClass[] Test2(IList<int> paras);
     }
 
     public class TestClass
