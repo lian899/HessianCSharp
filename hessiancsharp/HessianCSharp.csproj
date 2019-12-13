@@ -58,6 +58,8 @@
     <Compile Include="io\CBasicSerializer.cs" />
     <Compile Include="io\CDBNullDeserializer.cs" />
     <Compile Include="io\CDBNullSerializer.cs" />
+    <Compile Include="io\CCultureInfoDeserializer.cs" />
+    <Compile Include="io\CCultureInfoSerializer.cs" />
     <Compile Include="io\CGUIDDeserializer.cs" />
     <Compile Include="io\CGUIDSerializer.cs" />
     <Compile Include="io\CDecimalSerializer.cs" />
@@ -81,6 +83,7 @@
     <Compile Include="io\CMapDeserializer.cs" />
     <Compile Include="io\CMapSerializer.cs" />
     <Compile Include="io\CObjectDeserializer.cs" />
+    <Compile Include="io\CISerializableSerializer.cs" />
     <Compile Include="io\CObjectSerializer.cs" />
     <Compile Include="io\CSerializationConstants.cs" />
     <Compile Include="io\CSerializerFactory.cs" />

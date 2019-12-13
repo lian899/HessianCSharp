@@ -41,6 +41,7 @@ using System;
 using System.Collections;
 using System.IO;
 using System.Reflection;
+using System.Runtime.Serialization;
 
 #endregion
 namespace HessianCSharp.io
@@ -120,6 +121,9 @@ namespace HessianCSharp.io
 
             m_htSerializerMap.Add(typeof(Guid), new CGUIDSerializer());
             m_htTypeMap.Add(CGUIDSerializer.PROT_GUID_TYPE, new CGUIDDeserializer());
+
+            m_htSerializerMap.Add(typeof(System.Globalization.CultureInfo), new CCultureInfoSerializer());
+            m_htTypeMap.Add(CCultureInfoSerializer.PROT_LOCALE_TYPE, new CCultureInfoDeserializer());
 
             addBasic(typeof(char), "char", CSerializationConstants.CHARACTER);
             addBasic(typeof(byte), "byte", CSerializationConstants.BYTE);
@@ -223,6 +227,10 @@ namespace HessianCSharp.io
                 else if (type.IsEnum)
                 {
                     abstractSerializer = new CEnumSerializer();
+                }
+                else if (typeof(ISerializable).IsAssignableFrom(type))
+                {
+                    abstractSerializer = new CISerializableSerializer();
                 }
                 else
                 {
