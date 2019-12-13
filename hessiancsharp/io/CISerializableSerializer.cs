@@ -157,7 +157,7 @@ namespace HessianCSharp.io
             {
                 foreach (SerializationEntry serializationEntry in serializationInfo)
                 {
-                    abstractHessianOutput.WriteObject(serializationEntry.Name);
+                    abstractHessianOutput.WriteObject(serializationEntry.Value);
                 }
             }
             catch (IOException)
