@@ -299,6 +299,10 @@ namespace HessianCSharp.io
                 {
                     abstractDeserializer = new CExceptionDeserializer(type);
                 }
+                else if (typeof(ISerializable).IsAssignableFrom(type))
+                {
+                    abstractDeserializer = new CISerializableDeserializer(type);
+                }
                 else
                 {
                     if (m_htCachedDeserializerMap[type.FullName] != null)

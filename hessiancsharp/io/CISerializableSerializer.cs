@@ -35,12 +35,8 @@
 
 #region NAMESPACES
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.IO;
-using System.Reflection;
 using System.Runtime.Serialization;
-using HessianCSharp.Utilities;
 
 #endregion
 
@@ -55,10 +51,6 @@ namespace HessianCSharp.io
     {
 
         #region CLASS_FIELDS
-        /// <summary>
-        /// Fields of the objectType
-        /// </summary>
-        private readonly List<MemberInfo> m_alFields;
         #endregion
         #region CONSTRUCTORS
         /// <summary>
@@ -172,12 +164,6 @@ namespace HessianCSharp.io
                     e);
             }
         }
-
-        public virtual List<MemberInfo> GetSerializableFieldList()
-        {
-            return m_alFields;
-        }
-
 
         #endregion
     }

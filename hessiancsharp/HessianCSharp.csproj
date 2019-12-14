@@ -82,6 +82,7 @@
     <Compile Include="io\CInputStreamSerializer.cs" />
     <Compile Include="io\CMapDeserializer.cs" />
     <Compile Include="io\CMapSerializer.cs" />
+    <Compile Include="io\CISerializableDeserializer.cs" />
     <Compile Include="io\CObjectDeserializer.cs" />
     <Compile Include="io\CISerializableSerializer.cs" />
     <Compile Include="io\CObjectSerializer.cs" />
