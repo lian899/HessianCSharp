@@ -113,18 +113,6 @@ namespace HessianCSharp.io
             m_htSerializerMap = new Hashtable();
             m_htTypeMap = new Hashtable();
 
-            m_htSerializerMap.Add(typeof(decimal), new CDecimalSerializer());
-            m_htTypeMap.Add(CDecimalSerializer.PROT_DECIMAL_TYPE, new CDecimalDeserializer());
-
-            m_htSerializerMap.Add(typeof(DBNull), new CDBNullSerializer());
-            m_htTypeMap.Add(CDBNullSerializer.PROT_DBNULL_TYPE, new CDBNullDeserializer());
-
-            m_htSerializerMap.Add(typeof(Guid), new CGUIDSerializer());
-            m_htTypeMap.Add(CGUIDSerializer.PROT_GUID_TYPE, new CGUIDDeserializer());
-
-            m_htSerializerMap.Add(typeof(System.Globalization.CultureInfo), new CCultureInfoSerializer());
-            m_htTypeMap.Add(CCultureInfoSerializer.PROT_LOCALE_TYPE, new CCultureInfoDeserializer());
-
             addBasic(typeof(char), "char", CSerializationConstants.CHARACTER);
             addBasic(typeof(byte), "byte", CSerializationConstants.BYTE);
             addBasic(typeof(sbyte), "sbyte", CSerializationConstants.SBYTE);
@@ -156,8 +144,6 @@ namespace HessianCSharp.io
 
             //m_htDeserializerMap.Add(typeof(System.Decimal), new CDecimalDeserializer());
 
-
-
             m_htSerializerMap.Add(typeof(System.IO.FileInfo), new CStringValueSerializer());
             m_htDeserializerMap.Add(typeof(System.IO.FileInfo),
                 new CStringValueDeserializer(typeof(System.IO.FileInfo)));
@@ -170,6 +156,18 @@ namespace HessianCSharp.io
 
             //m_htSerializerMap.Add(typeof (System.DateTime), new CDateSerializer());
             //m_htDeserializerMap.Add(typeof (System.DateTime), new CDateDeserializer());
+
+            m_htSerializerMap.Add(typeof(decimal), new CDecimalSerializer());
+            m_htTypeMap.Add(CDecimalSerializer.PROT_DECIMAL_TYPE, new CDecimalDeserializer());
+
+            m_htSerializerMap.Add(typeof(DBNull), new CDBNullSerializer());
+            m_htTypeMap.Add(CDBNullSerializer.PROT_DBNULL_TYPE, new CDBNullDeserializer());
+
+            m_htSerializerMap.Add(typeof(Guid), new CGUIDSerializer());
+            m_htTypeMap.Add(CGUIDSerializer.PROT_GUID_TYPE, new CGUIDDeserializer());
+
+            m_htSerializerMap.Add(typeof(System.Globalization.CultureInfo), new CCultureInfoSerializer());
+            m_htTypeMap.Add(CCultureInfoSerializer.PROT_LOCALE_TYPE, new CCultureInfoDeserializer());
         }
 
         #endregion
@@ -313,17 +311,8 @@ namespace HessianCSharp.io
                     {
                         lock (deserializerLock)
                         {
-                            abstractDeserializer = (AbstractDeserializer)m_htCachedDeserializerMap[type.FullName];
-                            if (abstractDeserializer != null)
-                                return abstractDeserializer;
-                            else
-                            {
-                                abstractDeserializer = new CObjectDeserializer(type);
-                                m_htCachedDeserializerMap.Add(type.FullName, abstractDeserializer);
-                            }
-
-                            //abstractDeserializer = new CJsonDeserializer(type);
-                            //m_htCachedDeserializerMap.Add(type.FullName, abstractDeserializer);
+                            abstractDeserializer = new CObjectDeserializer(type);
+                            m_htCachedDeserializerMap.Add(type.FullName, abstractDeserializer);
                         }
 
                     }
