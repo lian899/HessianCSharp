@@ -239,8 +239,10 @@ namespace HessianCSharp.io
                     }
                     else
                     {
+                        //加锁防止多线程同时添加同一类型
                         lock (serializerLock)
                         {
+                            //可能有一个线程已经添加，这里再判断一次
                             abstractSerializer = (AbstractSerializer)m_htCachedSerializerMap[type.FullName];
                             if (abstractSerializer != null)
                                 return abstractSerializer;
@@ -309,10 +311,18 @@ namespace HessianCSharp.io
                     }
                     else
                     {
+                        //加锁防止多线程同时添加同一类型
                         lock (deserializerLock)
                         {
-                            abstractDeserializer = new CObjectDeserializer(type);
-                            m_htCachedDeserializerMap.Add(type.FullName, abstractDeserializer);
+                            //可能有一个线程已经添加，这里再判断一次
+                            abstractDeserializer = (AbstractDeserializer)m_htCachedDeserializerMap[type.FullName];
+                            if (abstractDeserializer != null)
+                                return abstractDeserializer;
+                            else
+                            {
+                                abstractDeserializer = new CObjectDeserializer(type);
+                                m_htCachedDeserializerMap.Add(type.FullName, abstractDeserializer);
+                            }
                         }
 
                     }
