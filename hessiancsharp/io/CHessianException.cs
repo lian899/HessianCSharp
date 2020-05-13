@@ -79,7 +79,15 @@ namespace HessianCSharp.io
         /// </summary>
         public string StackTraceDetail { get; set; }
 
-
+        public override string ToString()
+        {
+            if (!string.IsNullOrWhiteSpace(StackTraceDetail))
+            {
+                return StackTraceDetail;
+            }
+            else
+                return base.ToString();
+        }
         #endregion
     }
 }
