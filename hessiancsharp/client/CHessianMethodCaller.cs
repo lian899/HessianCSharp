@@ -265,8 +265,8 @@ namespace HessianCSharp.client
             catch (WebException e)
             {
                 var httpResponse = e.Response as HttpWebResponse;
-                if (httpResponse == null) throw new CHessianException(e.Message, e, e.ToString());
-                throw new CHessianException(string.Format("Code:{0},Message:{1}", (int)httpResponse.StatusCode, System.Web.HttpUtility.UrlDecode(httpResponse.StatusDescription)), e.ToString());
+                if (httpResponse == null) throw new CHessianException(e.Message, e);
+                throw new CHessianException(string.Format("Code:{0},Message:{1}", (int)httpResponse.StatusCode, System.Web.HttpUtility.UrlDecode(httpResponse.StatusDescription)), e);
             }
             catch (Exception e)
             {
@@ -280,7 +280,7 @@ namespace HessianCSharp.client
                 }
                 else
                 {
-                    throw new CHessianException("Exception by proxy call\n" + e.Message, e.ToString());
+                    throw new CHessianException("Exception by proxy call\n" + e.Message, e);
                 }
 
             }
