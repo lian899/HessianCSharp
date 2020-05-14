@@ -15,6 +15,7 @@ namespace HessianService
 
         public TestClass[] Test2()
         {
+            throw new Exception("test");
             List<TestClass> array = new List<TestClass>();
             //var d = "3147483647D";
             //var ind = (int.Parse(d));

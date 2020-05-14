@@ -83,7 +83,7 @@ namespace HessianCSharp.io
         {
             if (!string.IsNullOrWhiteSpace(StackTraceDetail))
             {
-                return StackTraceDetail;
+                return Message + "\r\n" + StackTraceDetail;
             }
             else
                 return base.ToString();
