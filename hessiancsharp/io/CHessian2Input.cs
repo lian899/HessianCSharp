@@ -3712,7 +3712,7 @@ namespace HessianCSharp.io
             {
                 String code = (String)fault["code"];
 
-                _replyFault = new CHessianException(message + "\r\nCode:" + code, detail?.ToString());
+                _replyFault = new CHessianException(message, "Code:" + code + "\r\n" + detail?.ToString());
 
                 return _replyFault;
             }
