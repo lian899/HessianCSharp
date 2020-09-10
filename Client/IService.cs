@@ -9,7 +9,7 @@ namespace Hessian.Models
     public interface IService
     {
         string Hello();
-        TestClass[] Test2();
+        TestClass[] Test2(decimal[] paras);
     }
 
     public class TestClass

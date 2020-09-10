@@ -95,19 +95,19 @@ namespace HessianCSharp.io
         {
             if (intLength >= 0)
             {
-                Object[] arrResult = createArray(intLength);
+                Array arrResult = createArray(intLength);
 
                 abstractHessianInput.AddRef(arrResult);
 
                 if (m_componentType != null)
                 {
                     for (int i = 0; i < arrResult.Length; i++)
-                        arrResult[i] = abstractHessianInput.ReadObject(m_componentType);
+                     arrResult.SetValue(abstractHessianInput.ReadObject(m_componentType),i); //arrResult[i] = abstractHessianInput.ReadObject(m_componentType);
                 }
                 else
                 {
                     for (int i = 0; i < arrResult.Length; i++)
-                        arrResult[i] = abstractHessianInput.ReadObject();
+                        arrResult.SetValue(abstractHessianInput.ReadObject(),i); //arrResult[i] = abstractHessianInput.ReadObject();
                 }
 
                 abstractHessianInput.ReadListEnd();
@@ -130,9 +130,9 @@ namespace HessianCSharp.io
 
                 abstractHessianInput.ReadListEnd();
 
-                Object[] arrResult = createArray(colList.Count);
+                Array arrResult = createArray(colList.Count);
                 for (int i = 0; i < arrResult.Length; i++)
-                    arrResult[i] = colList[i];
+                    arrResult.SetValue(colList[i],i); //arrResult[i] = colList[i];
                 return arrResult;
             }
         }
@@ -142,19 +142,19 @@ namespace HessianCSharp.io
         /// </summary>
         public override Object ReadLengthList(AbstractHessianInput abstractHessianInput, int length)
         {
-            Object[] data = createArray(length);
+            Array data = createArray(length);
 
             abstractHessianInput.AddRef(data);
 
             if (m_componentType != null)
             {
                 for (int i = 0; i < data.Length; i++)
-                    data[i] = abstractHessianInput.ReadObject(m_componentType);
+                    data.SetValue(abstractHessianInput.ReadObject(m_componentType),i); //data[i] = abstractHessianInput.ReadObject(m_componentType);
             }
             else
             {
                 for (int i = 0; i < data.Length; i++)
-                    data[i] = abstractHessianInput.ReadObject();
+                    data.SetValue(abstractHessianInput.ReadObject(),i); //data[i] = abstractHessianInput.ReadObject();
             }
 
             return data;
@@ -196,10 +196,10 @@ namespace HessianCSharp.io
         /// </summary>
         /// <param name="intLength">Length of the array</param>
         /// <returns>Array-Instance</returns>
-        protected internal virtual Object[] createArray(int intLength)
+        protected internal virtual Array createArray(int intLength)
         {
             if (m_componentType != null)
-                return (Object[])Array.CreateInstance(m_componentType, intLength);
+                return Array.CreateInstance(m_componentType, intLength);
             else
                 return new Object[intLength];
         }

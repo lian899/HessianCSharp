@@ -13,9 +13,8 @@ namespace HessianService
         }
 
 
-        public TestClass[] Test2()
+        public TestClass[] Test2(decimal[] paras)
         {
-            throw new Exception("test");
             List<TestClass> array = new List<TestClass>();
             //var d = "3147483647D";
             //var ind = (int.Parse(d));

@@ -25,7 +25,7 @@ namespace Client
                 //factory.IsHessian2Reply = false;
                 factory.BaseAddress = new Uri("http://localhost.fiddler:2010/");
                 var service = factory.Create<IService>();
-                var result = service.Test2();
+                var result = service.Test2(new decimal[] { 2.56M, 5.566M });
                 richTextBox1.Text = $"数据类型：{result.ToString()}";
 
                 var type = result.GetType();
