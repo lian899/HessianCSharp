@@ -56,12 +56,12 @@ namespace HessianCSharp.io
 			if (abstractHessianOutput.AddRef(objArrayToWrite))
 				return ;
 			
-			System.Object[] array = (Object[]) objArrayToWrite;
+			Array array = (Array) objArrayToWrite;
 
             bool hasEnd = abstractHessianOutput.WriteListBegin(array.Length, getArrayType(objArrayToWrite.GetType()));
 			
 			for (int i = 0; i < array.Length; i++)
-				abstractHessianOutput.WriteObject(array[i]);
+				abstractHessianOutput.WriteObject(array.GetValue(i));
 
             if (hasEnd)
                 abstractHessianOutput.WriteListEnd();
