@@ -10,100 +10,100 @@
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/Hessian.Models.dll">
-      <publishTime>09/28/2019 18:17:03</publishTime>
+      <publishTime>09/10/2020 16:38:29</publishTime>
     </File>
     <File Include="bin/Hessian.Models.pdb">
-      <publishTime>09/28/2019 18:17:03</publishTime>
+      <publishTime>09/10/2020 16:38:29</publishTime>
     </File>
     <File Include="bin/HessianCSharp.dll">
-      <publishTime>09/28/2019 18:17:02</publishTime>
+      <publishTime>09/10/2020 16:38:29</publishTime>
     </File>
     <File Include="bin/HessianCSharp.pdb">
-      <publishTime>09/28/2019 18:17:02</publishTime>
+      <publishTime>09/10/2020 16:38:29</publishTime>
     </File>
     <File Include="bin/HessianService.dll">
-      <publishTime>09/28/2019 18:17:03</publishTime>
+      <publishTime>09/10/2020 16:53:01</publishTime>
     </File>
     <File Include="bin/HessianService.pdb">
-      <publishTime>09/28/2019 18:17:03</publishTime>
+      <publishTime>09/10/2020 16:53:01</publishTime>
     </File>
     <File Include="bin/Microsoft.Web.Infrastructure.dll">
-      <publishTime>03/08/2019 09:49:32</publishTime>
+      <publishTime>05/13/2020 17:44:51</publishTime>
     </File>
     <File Include="bin/Microsoft.Web.Mvc.FixedDisplayModes.dll">
-      <publishTime>03/08/2019 09:49:32</publishTime>
+      <publishTime>05/13/2020 17:44:51</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
-      <publishTime>03/08/2019 09:49:32</publishTime>
+      <publishTime>05/13/2020 17:44:51</publishTime>
     </File>
     <File Include="bin/System.Net.Http.dll">
       <publishTime>09/26/2012 03:16:08</publishTime>
     </File>
     <File Include="bin/System.Net.Http.Formatting.dll">
-      <publishTime>03/08/2019 09:49:32</publishTime>
+      <publishTime>05/13/2020 17:44:51</publishTime>
     </File>
     <File Include="bin/System.Net.Http.WebRequest.dll">
       <publishTime>09/26/2012 03:16:08</publishTime>
     </File>
     <File Include="bin/System.Web.Helpers.dll">
-      <publishTime>03/08/2019 09:49:32</publishTime>
+      <publishTime>05/13/2020 17:44:51</publishTime>
     </File>
     <File Include="bin/System.Web.Http.dll">
-      <publishTime>03/08/2019 09:49:32</publishTime>
+      <publishTime>05/13/2020 17:44:51</publishTime>
     </File>
     <File Include="bin/System.Web.Http.WebHost.dll">
-      <publishTime>03/08/2019 09:49:32</publishTime>
+      <publishTime>05/13/2020 17:44:51</publishTime>
     </File>
     <File Include="bin/System.Web.Mvc.dll">
-      <publishTime>03/08/2019 09:49:32</publishTime>
+      <publishTime>05/13/2020 17:44:51</publishTime>
     </File>
     <File Include="bin/System.Web.Razor.dll">
-      <publishTime>03/08/2019 09:49:32</publishTime>
+      <publishTime>05/13/2020 17:44:51</publishTime>
     </File>
     <File Include="bin/System.Web.WebPages.Deployment.dll">
-      <publishTime>03/08/2019 09:49:32</publishTime>
+      <publishTime>05/13/2020 17:44:51</publishTime>
     </File>
     <File Include="bin/System.Web.WebPages.dll">
-      <publishTime>03/08/2019 09:49:32</publishTime>
+      <publishTime>05/13/2020 17:44:51</publishTime>
     </File>
     <File Include="bin/System.Web.WebPages.Razor.dll">
-      <publishTime>03/08/2019 09:49:32</publishTime>
+      <publishTime>05/13/2020 17:44:51</publishTime>
     </File>
     <File Include="bin/zh-Hans/System.Net.Http.Formatting.resources.dll">
-      <publishTime>03/08/2019 09:49:32</publishTime>
+      <publishTime>05/13/2020 17:44:51</publishTime>
     </File>
     <File Include="bin/zh-Hans/System.Web.Helpers.resources.dll">
-      <publishTime>03/08/2019 09:49:32</publishTime>
+      <publishTime>05/13/2020 17:44:51</publishTime>
     </File>
     <File Include="bin/zh-Hans/System.Web.Http.resources.dll">
-      <publishTime>03/08/2019 09:49:32</publishTime>
+      <publishTime>05/13/2020 17:44:51</publishTime>
     </File>
     <File Include="bin/zh-Hans/System.Web.Http.WebHost.resources.dll">
-      <publishTime>03/08/2019 09:49:32</publishTime>
+      <publishTime>05/13/2020 17:44:51</publishTime>
     </File>
     <File Include="bin/zh-Hans/System.Web.Mvc.resources.dll">
-      <publishTime>03/08/2019 09:49:32</publishTime>
+      <publishTime>05/13/2020 17:44:51</publishTime>
     </File>
     <File Include="bin/zh-Hans/System.Web.Razor.resources.dll">
-      <publishTime>03/08/2019 09:49:32</publishTime>
+      <publishTime>05/13/2020 17:44:51</publishTime>
     </File>
     <File Include="bin/zh-Hans/System.Web.WebPages.Deployment.resources.dll">
-      <publishTime>03/08/2019 09:49:32</publishTime>
+      <publishTime>05/13/2020 17:44:51</publishTime>
     </File>
     <File Include="bin/zh-Hans/System.Web.WebPages.Razor.resources.dll">
-      <publishTime>03/08/2019 09:49:32</publishTime>
+      <publishTime>05/13/2020 17:44:51</publishTime>
     </File>
     <File Include="bin/zh-Hans/System.Web.WebPages.resources.dll">
-      <publishTime>03/08/2019 09:49:32</publishTime>
+      <publishTime>05/13/2020 17:44:51</publishTime>
     </File>
     <File Include="Global.asax">
-      <publishTime>03/08/2019 09:49:32</publishTime>
+      <publishTime>05/13/2020 17:44:51</publishTime>
     </File>
     <File Include="packages.config">
-      <publishTime>03/08/2019 09:49:32</publishTime>
+      <publishTime>05/13/2020 17:44:51</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>04/22/2019 17:53:41</publishTime>
+      <publishTime>05/13/2020 17:44:51</publishTime>
     </File>
   </ItemGroup>
 </Project>
