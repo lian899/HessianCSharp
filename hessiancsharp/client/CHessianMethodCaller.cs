@@ -191,7 +191,7 @@ namespace HessianCSharp.client
                 catch (Exception e)
                 {
                     throw new CHessianException("Exception by sending request to the service with URI:\n" +
-                         this.URI.ToString() + "\n" + e.Message);
+                         this.URI.ToString() + "\n" + e.Message, e);
                 }
 
                 sOutStream.Flush();
