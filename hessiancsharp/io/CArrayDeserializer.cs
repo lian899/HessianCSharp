@@ -50,7 +50,11 @@ namespace HessianCSharp.io
         /// Type of the array objects
         /// </summary>
         private Type m_componentType;
+
+        private Type m_type;
+
         #endregion
+
         #region PROPERTIES
         /// <summary>
         /// Type property
@@ -59,11 +63,11 @@ namespace HessianCSharp.io
         {
             get
             {
-                return typeof(Object[]);
+                return m_type;
             }
-
         }
         #endregion
+
         #region CONSTRUCTORS
         /// <summary>
         /// Constructor.
@@ -73,8 +77,23 @@ namespace HessianCSharp.io
         {
             if (componentABSTRACTDeserializer != null)
                 m_componentType = componentABSTRACTDeserializer.GetOwnType();
+
+            if (m_componentType != null)
+            {
+                try
+                {
+                    m_type = m_componentType.MakeArrayType();
+                }
+                catch (Exception)
+                {
+                }
+            }
+
+            if (m_type == null)
+                m_type = typeof(object[]);
         }
         #endregion
+
         #region PUBLIC_METHODS
         /// <summary>
         /// Returns the type of the reader
@@ -102,12 +121,12 @@ namespace HessianCSharp.io
                 if (m_componentType != null)
                 {
                     for (int i = 0; i < arrResult.Length; i++)
-                     arrResult.SetValue(abstractHessianInput.ReadObject(m_componentType),i); //arrResult[i] = abstractHessianInput.ReadObject(m_componentType);
+                        arrResult.SetValue(abstractHessianInput.ReadObject(m_componentType), i); //arrResult[i] = abstractHessianInput.ReadObject(m_componentType);
                 }
                 else
                 {
                     for (int i = 0; i < arrResult.Length; i++)
-                        arrResult.SetValue(abstractHessianInput.ReadObject(),i); //arrResult[i] = abstractHessianInput.ReadObject();
+                        arrResult.SetValue(abstractHessianInput.ReadObject(), i); //arrResult[i] = abstractHessianInput.ReadObject();
                 }
 
                 abstractHessianInput.ReadListEnd();
@@ -132,7 +151,7 @@ namespace HessianCSharp.io
 
                 Array arrResult = createArray(colList.Count);
                 for (int i = 0; i < arrResult.Length; i++)
-                    arrResult.SetValue(colList[i],i); //arrResult[i] = colList[i];
+                    arrResult.SetValue(colList[i], i); //arrResult[i] = colList[i];
                 return arrResult;
             }
         }
@@ -149,12 +168,12 @@ namespace HessianCSharp.io
             if (m_componentType != null)
             {
                 for (int i = 0; i < data.Length; i++)
-                    data.SetValue(abstractHessianInput.ReadObject(m_componentType),i); //data[i] = abstractHessianInput.ReadObject(m_componentType);
+                    data.SetValue(abstractHessianInput.ReadObject(m_componentType), i); //data[i] = abstractHessianInput.ReadObject(m_componentType);
             }
             else
             {
                 for (int i = 0; i < data.Length; i++)
-                    data.SetValue(abstractHessianInput.ReadObject(),i); //data[i] = abstractHessianInput.ReadObject();
+                    data.SetValue(abstractHessianInput.ReadObject(), i); //data[i] = abstractHessianInput.ReadObject();
             }
 
             return data;

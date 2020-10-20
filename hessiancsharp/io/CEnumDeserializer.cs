@@ -66,6 +66,11 @@ namespace HessianCSharp.io
 
         #region PUBLIC_METHODS
 
+        public override Type GetOwnType()
+        {
+            return m_type;
+        }
+
         public override object ReadMap(AbstractHessianInput abstractHessianInput)
         {
             String name = null;
