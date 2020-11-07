@@ -103,7 +103,8 @@
     <Compile Include="server\CHessianSkeleton.cs" />
     <Compile Include="server\CustomHandler.cs" />
     <Compile Include="server\EncoderHelper.cs" />
-    <Compile Include="server\RouteAttribute.cs" />
+    <Compile Include="server\HessianInterceptorAttribute.cs" />
+    <Compile Include="server\HessianRouteAttribute.cs" />
     <Compile Include="server\ServiceFactory.cs" />
     <Compile Include="Utilities\ReflectionUtils.cs" />
     <Compile Include="webserver\CConnection.cs" />

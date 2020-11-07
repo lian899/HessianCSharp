@@ -36,6 +36,7 @@
 using System;
 using System.Collections;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Text;
 using HessianCSharp.io;
@@ -204,6 +205,15 @@ namespace HessianCSharp.server
             }
             inHessian.CompleteCall();
 
+            var interceptor = methodInf.GetCustomAttributes(typeof(HessianInterceptorAttribute), false)
+                .Cast<HessianInterceptorAttribute>().FirstOrDefault();
+
+            MethodExecutedContext methodContext = new MethodExecutedContext();
+            methodContext.ServiceType = m_Service.GetType();
+            methodContext.Method = methodInf;
+            methodContext.ParamInfos = paramInfo;
+            methodContext.ParamValues = valuesParam;
+
             Object result = null;
 
             try
@@ -224,6 +234,9 @@ namespace HessianCSharp.server
 
                 InvokeErrorCallBack?.Invoke(this, e);
 
+                methodContext.Exception = e;
+                interceptor?.OnMethodExecuted(methodContext);
+
                 //多层InnerException使用GetBaseException()更好。
                 e = e.GetBaseException();
                 //outHessian.StartReply();
@@ -232,14 +245,15 @@ namespace HessianCSharp.server
                 //outHessian.CompleteReply();
                 return;
             }
+
+            methodContext.ReturnValue = result;
+            interceptor?.OnMethodExecuted(methodContext);
+
             outHessian.StartReply();
 
             outHessian.WriteObject(result);
 
             outHessian.CompleteReply();
-
-
-
         }
 
 
