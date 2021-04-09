@@ -38,6 +38,7 @@ using System.Web;
 using HessianCSharp.io;
 using System.Web.SessionState;
 using System;
+using System.Linq;
 
 #endregion
 
@@ -77,7 +78,11 @@ namespace HessianCSharp.server
                 //AbstractHessianInput inHessian = new CHessianInput(inStream);
                 //AbstractHessianOutput outHessian = new CHessianOutput(ctx.Response.OutputStream);
 
-                var service = ServiceFactory.SelectService(ctx.Request.Path);
+                var serviceUrl = ctx?.Request?.Headers?.GetValues("ServiceUrl")?.FirstOrDefault();
+                if (string.IsNullOrWhiteSpace(serviceUrl))
+                    serviceUrl = ctx.Request.Path;
+
+                var service = ServiceFactory.SelectService(serviceUrl);
                 if (service == null)
                 {
                     ctx.Response.StatusCode = 404;  // "Internal server error"

@@ -169,12 +169,14 @@ namespace HessianCSharp.client
             var attrRoute = (HessianRouteAttribute)typeof(T).GetCustomAttributes(typeof(HessianRouteAttribute), false).FirstOrDefault();
             if (attrRoute != null)
             {
-                url = attrRoute.Uri;
+                url = attrRoute.Uri?.Trim();
+                if (url?.EndsWith(UrlSuffix) ?? false)
+                    url = url.Substring(0, url.Length - UrlSuffix.Length);
             }
             else
             {
                 var type = typeof(T);
-                url = "/" + (type.Namespace + "." + type.Name).Replace(".", "/") + _urlSuffix;
+                url = "/" + (type.Namespace + "." + type.Name).Replace(".", "/");
             }
             return (T)CreateHessianStandardProxy(url, typeof(T));
         }
