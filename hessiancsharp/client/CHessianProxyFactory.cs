@@ -170,8 +170,9 @@ namespace HessianCSharp.client
             if (attrRoute != null)
             {
                 url = attrRoute.Uri?.Trim();
-                if (url?.EndsWith(UrlSuffix) ?? false)
-                    url = url.Substring(0, url.Length - UrlSuffix.Length);
+                int num;
+                if (url != null && (num = url.LastIndexOf('.')) != -1)
+                    url = url.Substring(0, num);
             }
             else
             {
