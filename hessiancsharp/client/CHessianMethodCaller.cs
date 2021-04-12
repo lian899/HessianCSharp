@@ -74,7 +74,6 @@ namespace HessianCSharp.client
         private NetworkCredential m_credentials = null;
 
         #endregion
-
         #region PROPERTIES
         /// <summary> 
         /// Returns the connection uri to the hessian service.
@@ -82,7 +81,10 @@ namespace HessianCSharp.client
         public virtual Uri URI
         {
             get { return m_uriHessianServiceUri; }
+
         }
+
+
 
         #endregion
         #region CONSTRUCTORS
@@ -123,19 +125,8 @@ namespace HessianCSharp.client
 
             try
             {
-                var methodUri = new Uri(string.Format("{0}/{1}{2}",
-                    m_uriHessianServiceUri.ToString(),
-                    HttpUtility.UrlEncode(methodInfo.Name),
-                    m_CHessianProxyFactory.UrlSuffix),
-                    UriKind.RelativeOrAbsolute);
-
-                var serviceUrl = string.Format("{0}{1}",
-                    m_uriHessianServiceUri.ToString(),
-                    m_CHessianProxyFactory.UrlSuffix);
-
+                var methodUri = new Uri(string.Format("{0}?{1}", m_uriHessianServiceUri.ToString(), HttpUtility.UrlEncode(methodInfo.Name)), UriKind.RelativeOrAbsolute);
                 WebRequest webRequest = this.OpenConnection(methodUri);
-                webRequest.Headers.Add("ServiceUrl", serviceUrl);
-
 #if COMPACT_FRAMEWORK
 #else
                 try
