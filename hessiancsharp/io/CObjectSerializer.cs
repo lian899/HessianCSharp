@@ -71,7 +71,7 @@ namespace HessianCSharp.io
                 BindingFlags.GetField |
                 BindingFlags.DeclaredOnly;
 
-            m_alFields = ReflectionUtils.GetFieldsAndProperties(type, bindingAttr);
+            m_alFields = ReflectionUtils.GetCanReadFieldsAndProperties(type, bindingAttr);
         }
 
         #endregion

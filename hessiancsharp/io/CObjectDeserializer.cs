@@ -85,7 +85,7 @@ namespace HessianCSharp.io
                                        BindingFlags.Instance |
                                        BindingFlags.GetField |
                                        BindingFlags.DeclaredOnly;
-            var m_alFields = ReflectionUtils.GetFieldsAndProperties(m_type, bindingAttr);
+            var m_alFields = ReflectionUtils.GetCanSetFieldsAndProperties(m_type, bindingAttr);
 
             foreach (var memberInfo in m_alFields)
             {

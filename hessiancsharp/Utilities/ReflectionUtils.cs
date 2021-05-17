@@ -52,6 +52,16 @@ namespace HessianCSharp.Utilities
             return targetMembers;
         }
 
+        public static List<MemberInfo> GetCanSetFieldsAndProperties(Type type, BindingFlags bindingAttr)
+        {
+            return GetFieldsAndProperties(type, bindingAttr).Where(x => CanSetMemberValue(x, false, false)).ToList();
+        }
+
+        public static List<MemberInfo> GetCanReadFieldsAndProperties(Type type, BindingFlags bindingAttr)
+        {
+            return GetFieldsAndProperties(type, bindingAttr).Where(x => CanReadMemberValue(x, false)).ToList();
+        }
+
         private static IEnumerable<MemberInfo> GetFields(Type targetType, BindingFlags bindingAttr)
         {
             List<MemberInfo> fieldInfos = new List<MemberInfo>(targetType.GetFields(bindingAttr));
@@ -70,9 +80,33 @@ namespace HessianCSharp.Utilities
             {
                 if (targetMembers.All(p => p.Name != memberInfo.Name))
                 {
-                    if (CanSetMemberValue(memberInfo, false, false))
-                        targetMembers.Add(memberInfo);
+                    targetMembers.Add(memberInfo);
                 }
+            }
+        }
+
+        public static bool CanReadMemberValue(MemberInfo member, bool nonPublic)
+        {
+            switch (member.MemberType())
+            {
+                case MemberTypes.Field:
+                    FieldInfo fieldInfo = (FieldInfo)member;
+
+                    if (nonPublic)
+                        return true;
+                    else if (fieldInfo.IsPublic)
+                        return true;
+                    return false;
+                case MemberTypes.Property:
+                    PropertyInfo propertyInfo = (PropertyInfo)member;
+
+                    if (!propertyInfo.CanRead)
+                        return false;
+                    if (nonPublic)
+                        return true;
+                    return (propertyInfo.GetGetMethod(nonPublic) != null);
+                default:
+                    return false;
             }
         }
 
