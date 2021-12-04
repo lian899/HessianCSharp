@@ -99,7 +99,6 @@ namespace HessianCSharp.io
         //    }
         //}
 
-
         #region PUBLIC_METHODS
         /// <summary>
         /// Reads the basic (primitive & Date ) data types
@@ -214,7 +213,10 @@ namespace HessianCSharp.io
                     long javaTime = abstractHessianInput.ReadUTCDate();
                     const long timeShift = 62135596800000;
                     DateTime dt = new DateTime((javaTime + timeShift) * 10000, DateTimeKind.Utc);
-                    dt = dt.ToLocalTime(); // der Einfachheit halber
+                    if (dt != DateTime.MinValue)
+                    {
+                        dt = dt.ToLocalTime(); // der Einfachheit halber
+                    }
                     return dt;
 
                 default:

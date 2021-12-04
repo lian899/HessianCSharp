@@ -2066,7 +2066,10 @@ namespace HessianCSharp.io
                         long javaTime = ParseLong();
                         const long timeShift = 62135596800000;
                         DateTime dt = new DateTime((javaTime + timeShift) * 10000, DateTimeKind.Utc);
-                        dt = dt.ToLocalTime(); // der Einfachheit halber
+                        if (dt != DateTime.MinValue)
+                        {
+                            dt = dt.ToLocalTime(); // der Einfachheit halber
+                        }
                         return dt;
                     }
                 //return new DateTime(ParseLong());
@@ -2076,7 +2079,10 @@ namespace HessianCSharp.io
                         long javaTime = ParseInt() * 60000L;
                         const long timeShift = 62135596800000;
                         DateTime dt = new DateTime((javaTime + timeShift) * 10000, DateTimeKind.Utc);
-                        dt = dt.ToLocalTime(); // der Einfachheit halber
+                        if (dt != DateTime.MinValue)
+                        {
+                            dt = dt.ToLocalTime(); // der Einfachheit halber
+                        }
                         return dt;
                     }
                 //return new DateTime(ParseInt() * 60000L);

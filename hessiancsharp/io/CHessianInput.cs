@@ -467,7 +467,10 @@ namespace HessianCSharp.io
                     long javaTime = ParseLong();
                     const long timeShift = 62135596800000;
                     DateTime dt = new DateTime((javaTime + timeShift) * 10000, DateTimeKind.Utc);
-                    dt = dt.ToLocalTime(); // der Einfachheit halber
+                    if (dt != DateTime.MinValue)
+                    {
+                        dt = dt.ToLocalTime(); // der Einfachheit halber
+                    }
                     return dt;
                 case CHessianProtocolConstants.PROT_REF_TYPE:
                     {
