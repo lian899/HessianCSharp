@@ -50,54 +50,58 @@ namespace HessianCSharp.io
         private int m_intCode;
         #endregion
 
-        //public new Type GetType()
-        //{
-        //    switch (m_intCode)
-        //    {
-        //        case BOOLEAN:
-        //            return typeof(bool);
-        //        case BYTE:
-        //            return typeof(byte);
-        //        case SHORT:
-        //            return typeof(short);
-        //        case INTEGER:
-        //            return typeof(int);
-        //        case LONG:
-        //            return typeof(long);
-        //        case FLOAT:
-        //            return typeof(float);
-        //        case DOUBLE:
-        //            return typeof(double);
-        //        case CHARACTER:
-        //            return typeof(char);
-        //        case STRING:
-        //            return typeof(string);
-        //        case DATE:
-        //            return typeof(DateTime);
-        //        case BOOLEAN_ARRAY:
-        //            return typeof(bool[]);
-        //        case BYTE_ARRAY:
-        //            return typeof(byte[]);
-        //        case SHORT_ARRAY:
-        //            return typeof(short[]);
-        //        case INTEGER_ARRAY:
-        //            return typeof(int[]);
-        //        case LONG_ARRAY:
-        //            return typeof(long[]);
-        //        case FLOAT_ARRAY:
-        //            return typeof(float[]);
-        //        case DOUBLE_ARRAY:
-        //            return typeof(double[]);
-        //        case CHARACTER_ARRAY:
-        //            return typeof(char[]);
-        //        case STRING_ARRAY:
-        //            return typeof(string[]);
-        //        case OBJECT_ARRAY:
-        //            return typeof(object[]);
-        //        default:
-        //            throw new InvalidOperationException();
-        //    }
-        //}
+        public override Type GetOwnType()
+        {
+            switch (m_intCode)
+            {
+                case BOOLEAN:
+                    return typeof(bool);
+                case BYTE:
+                    return typeof(byte);
+                case SBYTE:
+                    return typeof(sbyte);
+                case FLOAT:
+                    return typeof(float);
+                case SHORT:
+                    return typeof(short);
+                case INTEGER:
+                    return typeof(int);
+                case LONG:
+                    return typeof(long);
+                case DOUBLE:
+                    return typeof(double);
+                case STRING:
+                    return typeof(string);
+                case CHARACTER:
+                    return typeof(char);
+                case BOOLEAN_ARRAY:
+                    return typeof(bool[]);
+                case SHORT_ARRAY:
+                    return typeof(short[]);
+                case INTEGER_ARRAY:
+                    return typeof(int[]);
+                case LONG_ARRAY:
+                    return typeof(long[]);
+                case FLOAT_ARRAY:
+                    return typeof(float[]);
+                case DOUBLE_ARRAY:
+                    return typeof(double[]);
+                case CHARACTER_ARRAY:
+                    return typeof(char[]);
+                case STRING_ARRAY:
+                    return typeof(string[]);
+                case BYTE_ARRAY:
+                    return typeof(byte[]);
+                case SBYTE_ARRAY:
+                    return typeof(sbyte[]);
+                case OBJECT_ARRAY:
+                    return typeof(object[]);
+                case DATE:
+                    return typeof(DateTime);
+                default:
+                    throw new InvalidOperationException();
+            }
+        }
 
         #region PUBLIC_METHODS
         /// <summary>
